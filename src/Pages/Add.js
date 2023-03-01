@@ -146,7 +146,7 @@ function Add() {
     console.log("44444444444", baitData);
 
     try {
-      const docRef = await addDoc(collection(db, "baits"), baitData);
+      await addDoc(collection(db, "baits"), baitData);
     } catch (error) {
       console.error("Add Error! ", error);
     }
