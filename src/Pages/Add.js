@@ -72,10 +72,10 @@ function Add() {
     setBait({ ...newBait, structureDec: temp });
   };
 
-  const getStringArray = () => {
-    let temp = [];
-    return temp;
-  };
+  // const getStringArray = () => {
+  //   let temp = [];
+  //   return temp;
+  // };
 
   const handleSubmit = async () => {
     const baitData = {
@@ -107,6 +107,7 @@ function Add() {
 
     try {
       const docRef = await addDoc(collection(db, "baits"), baitData);
+      docRef();
     } catch (error) {
       console.error("Add Error! ", error);
     }
