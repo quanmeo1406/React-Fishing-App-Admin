@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/style-prop-object */
 import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
+// import ImageUpload from "../Components/ImageUpload";
 import InputField from "../Components/InputField";
 import MultiSelect from "../Components/MultiSelect";
 import SelectComponent from "../Components/SelectComponent";
@@ -45,7 +47,45 @@ function Add() {
       winter: "",
     },
   });
+  const [base64Data, setBaes64Data] = useState(null);
 
+  const ImageUpload = () => {
+    const onChange = (e) => {
+      let file = e.target.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => _handleReaderLoaded(e);
+        reader.readAsBinaryString(file);
+      }
+    };
+
+    const _handleReaderLoaded = (e) => {
+      let binaryString = e.target.result;
+      setBaes64Data(btoa(binaryString));
+    };
+
+    return (
+      <div className="w-[300px] h-fit p-3 ">
+        <input
+          type="file"
+          name="image"
+          id="file"
+          accept=".jpg, .jpeg, .png"
+          onChange={(e) => onChange(e)}
+        />
+        <br />
+        {base64Data != null && (
+          <div className="w-full h-[200px] p-3">
+            <img
+              className="w-full h-full"
+              src={`data:image/png;base64,${base64Data}`}
+            />
+          </div>
+        )}
+      </div>
+    );
+  };
   const handleChange = (e, stateName) => {
     setBait({ ...newBait, [stateName]: e.target.value });
   };
@@ -97,7 +137,7 @@ function Add() {
       current: newBait.current.value,
       line: newBait.line,
       pound: newBait.pound,
-      imageUri: newBait.imageUri,
+      imageUri: base64Data,
       additionalInfo: newBait.addInfo,
       instructionDec: newBait.instructionDec,
       patternDec: newBait.patternDec,
@@ -107,7 +147,6 @@ function Add() {
 
     try {
       const docRef = await addDoc(collection(db, "baits"), baitData);
-      docRef();
     } catch (error) {
       console.error("Add Error! ", error);
     }
@@ -128,6 +167,10 @@ function Add() {
           styles="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           onChange={(e) => handleChange(e, "name")}
         />
+
+        <div className="w-full flex items-center justify-center">
+          <ImageUpload />
+        </div>
 
         <div className="flex flex-wrap">
           <SelectComponent
