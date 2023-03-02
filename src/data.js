@@ -283,6 +283,7 @@ export const TypeItems = {
     { label: "Creature", value: "Creature" },
   ],
   Swimbaits: [
+    { label: "Paddle tial", value: "Paddle tial" },
     { label: "Glide baits", value: "Glide baits" },
     { label: "Jointed", value: "Jointed" },
     { label: "Curl tail", value: "Curl tail" },

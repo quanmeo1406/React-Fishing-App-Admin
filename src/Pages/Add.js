@@ -48,6 +48,7 @@ function Add() {
     },
   });
   const [base64Data, setBaes64Data] = useState(null);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const ImageUpload = () => {
     const onChange = (e) => {
@@ -118,6 +119,7 @@ function Add() {
   // };
 
   const handleSubmit = async () => {
+    setIsSubmit(true);
     const baitData = {
       name: newBait.name,
       groupType: newBait.groupType.value,
@@ -146,7 +148,9 @@ function Add() {
     console.log("44444444444", baitData);
 
     try {
-      await addDoc(collection(db, "baits"), baitData);
+      await addDoc(collection(db, "baits"), baitData).then((res) =>
+        setIsSubmit(false)
+      );
     } catch (error) {
       console.error("Add Error! ", error);
     }
@@ -398,8 +402,9 @@ function Add() {
           <button
             className="border-2 rounded-lg border-sky-400 py-5 px-10"
             onClick={() => handleSubmit()}
+            disabled={isSubmit}
           >
-            Submit
+            {isSubmit ? "Submitted" : "Submit"}
           </button>
         </div>
       </div>
