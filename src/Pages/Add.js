@@ -173,124 +173,133 @@ function Add() {
         </div>
 
         <div className="flex flex-wrap">
+          <div className="w-full">
+            <p className="text-lg text-left pl-5">Type Selection</p>
+          </div>
           <SelectComponent
-            name="groupType"
+            name="GroupType"
             options={DropdownItems.type}
             styles=""
             value={newBait.groupType}
             onChange={(e) => handleSelect(e, "groupType")}
           />
           <SelectComponent
-            name="subType"
+            name="SubType"
             options={TypeItems[newBait.groupType.value]}
             styles=""
             value={newBait.type}
             onChange={(e) => handleSelect(e, "type")}
           />
+          <div className="w-full">
+            <p className="text-lg text-left pl-5">Other options</p>
+          </div>
           <MultiSelect
-            name="season"
+            name="Season"
             options={DropdownItems.season}
             styles=""
             // value={newBait.season}
             onChange={(e) => handleMulti(e, "season")}
           />
           <MultiSelect
-            name="waterTemp"
+            name="WaterTemp"
             options={DropdownItems.waterTemp}
             styles=""
             // value={newBait.waterTemp}
             onChange={(e) => handleMulti(e, "waterTemp")}
           />
           <MultiSelect
-            name="timeOfDay"
+            name="Time Of Day"
             options={DropdownItems.timeOfDay}
             styles=""
             // value={newBait.timeOfDay}
             onChange={(e) => handleMulti(e, "timeOfDay")}
           />
           <MultiSelect
-            name="waterClarity"
+            name="Water Clarity"
             options={DropdownItems.waterClarity}
             styles=""
             // value={newBait.waterClarity}
             onChange={(e) => handleMulti(e, "waterClarity")}
           />
           <MultiSelect
-            name="opacity"
+            name="Opacity"
             options={DropdownItems.opacity}
             styles=""
             // value={newBait.opacity}
             onChange={(e) => handleMulti(e, "opacity")}
           />
           <MultiSelect
-            name="wind"
+            name="Wind"
             options={DropdownItems.wind}
             styles=""
             // value={newBait.wind}
             onChange={(e) => handleMulti(e, "wind")}
           />
           <MultiSelect
-            name="depth"
+            name="Depth"
             options={DropdownItems.depth}
             styles=""
             // value={newBait.depth}
             onChange={(e) => handleMulti(e, "depth")}
           />
           <MultiSelect
-            name="weatherCondition"
+            name="Weather Condition"
             options={DropdownItems.weatherCondition}
             styles=""
             // value={newBait.weatherCondition}
             onChange={(e) => handleMulti(e, "weatherCondition")}
           />
           <MultiSelect
-            name="structure"
+            name="Structure"
             options={DropdownItems.structure}
             styles=""
             // value={newBait.structure}
             onChange={(e) => handleMulti(e, "structure")}
           />
           <MultiSelect
-            name="behavior"
+            name="Behavior"
             options={DropdownItems.behavior}
             styles=""
             // value={newBait.behavior}
             onChange={(e) => handleMulti(e, "behavior")}
           />
           <MultiSelect
-            name="instruction"
+            name="Instruction"
             options={DropdownItems.instruction}
             styles=""
             // value={newBait.instruction}
             onChange={(e) => handleMulti(e, "instruction")}
           />
           <SelectComponent
-            name="current"
+            name="Current"
             options={DropdownItems.current}
             styles=""
             value={newBait.current}
             onChange={(e) => handleSelect(e, "current")}
           />
+          <div className="w-full">
+            <p className="text-lg text-left pl-5">Line Selection</p>
+          </div>
           <MultiSelect
-            name="pattern"
-            options={DropdownItems.pattern}
-            styles=""
-            // value={newBait.pattern}
-            onChange={(e) => handleMulti(e, "pattern")}
-          />
-          <MultiSelect
-            name="line"
+            name="Line Type"
             options={DropdownItems.line}
             styles=""
             // value={newBait.line}
             onChange={(e) => handleMulti(e, "line")}
           />
           <MultiSelect
-            name="pound"
+            name="Line Weight"
             options={DropdownItems.pound}
             styles=""
             // value={newBait.pound}
             onChange={(e) => handleMulti(e, "pound")}
+          />
+          <MultiSelect
+            name="Pattern"
+            options={DropdownItems.pattern}
+            styles=""
+            // value={newBait.pattern}
+            onChange={(e) => handleMulti(e, "pattern")}
           />
         </div>
 
